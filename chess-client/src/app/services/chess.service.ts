@@ -15,6 +15,7 @@ export class ChessService {
 	}
 
 	newGame() {
+		/*
 	  const config = {
 		  position: 'start',
 		  pieceTheme: 'assets/img/chesspieces/wikipedia/{piece}.png',
@@ -22,5 +23,6 @@ export class ChessService {
 	  }
 		const board = Chessboard('chessboard', config)
 		console.info('>>> board', board);
+		*/
 	}
 }

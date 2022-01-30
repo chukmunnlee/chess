@@ -72,7 +72,8 @@
               "browserTarget": "chess-client:build:production"
             },
             "development": {
-              "browserTarget": "chess-client:build:development"
+              "browserTarget": "chess-client:build:development",
+				  "proxyConfig": "proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"

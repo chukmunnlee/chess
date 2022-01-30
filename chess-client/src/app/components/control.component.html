@@ -1,8 +1,8 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="joinGame()">
 	<div class="d-flex align-items-center">
 		<div class="row">
 			<div class="col">
-				<button mat-raised-button color="warn">
+				<button type="button" mat-raised-button color="warn" (click)="createGame()">
 					Create
 				</button>
 			</div>
@@ -17,7 +17,9 @@
 				</mat-form-field>
 			</div>
 			<div class="col">
-				<button mat-raised-button color="primary">Join</button>
+				<button type="submit" mat-raised-button color="primary">
+					Join
+				</button>
 			</div>
 		</div>
 	</div>

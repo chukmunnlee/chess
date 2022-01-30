@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ChessService} from '../services/chess.service';
 
-//import Chessboard from '@ggblee/chessboardjs/dist'
 const { Chessboard } = require('@ggblee/chessboardjs/dist/chessboard')
 
 @Component({
@@ -11,10 +10,22 @@ const { Chessboard } = require('@ggblee/chessboardjs/dist/chessboard')
 })
 export class BoardComponent implements OnInit {
 
-  constructor(private chessSvc: ChessService) { }
+	private board!: any
+
+	constructor(private win: Window) { }
 
   ngOnInit(): void {
-	  this.chessSvc.newGame();
+		const config = {
+		  position: 'start',
+		  pieceTheme: 'assets/img/chesspieces/wikipedia/{piece}.png',
+		  orientation: 'white'
+		}
+		this.board = Chessboard('chessboard')
   }
+
+	onResize() {
+		console.info('on resize')
+		this.board.resize()
+	}
 
 }
