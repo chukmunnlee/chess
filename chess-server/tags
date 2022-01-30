@@ -1,0 +1,71 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/cmlee/tmp/chess/chess-server/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+ATTR_GAMEID	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String ATTR_GAMEID = "gameId";$/;"	f	interface:Constants
+AppConfig	src/main/java/ibf2021/chessserver/AppConfig.java	/^public class AppConfig implements WebSocketConfigurer {$/;"	c
+CMD_NEW	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String CMD_NEW = "new";$/;"	f	interface:Constants
+ChessEndpoint	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	public ChessEndpoint(ChessRepositoryService chessRepoSvc) {$/;"	m	class:ChessEndpoint
+ChessEndpoint	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^public class ChessEndpoint extends TextWebSocketHandler {$/;"	c
+ChessGameController	src/main/java/ibf2021/chessserver/controllers/ChessGameController.java	/^public class ChessGameController {$/;"	c
+ChessRepositoryService	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public ChessRepositoryService() {$/;"	m	class:ChessRepositoryService
+ChessRepositoryService	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^public class ChessRepositoryService {$/;"	c
+ChessserverApplication	src/main/java/ibf2021/chessserver/ChessserverApplication.java	/^public class ChessserverApplication {$/;"	c
+ChessserverApplicationTests	src/test/java/ibf2021/chessserver/ChessserverApplicationTests.java	/^class ChessserverApplicationTests {$/;"	c
+Constants	src/main/java/ibf2021/chessserver/Constants.java	/^public interface Constants {$/;"	i
+Game	src/main/java/ibf2021/chessserver/models/Game.java	/^	public Game() {$/;"	m	class:Game
+Game	src/main/java/ibf2021/chessserver/models/Game.java	/^	public Game(String gid) {$/;"	m	class:Game
+Game	src/main/java/ibf2021/chessserver/models/Game.java	/^public class Game {$/;"	c
+MSG_ATTR_CMD	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_CMD = "cmd";$/;"	f	interface:Constants
+MSG_ATTR_GID	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_GID = "gameId";$/;"	f	interface:Constants
+Message	src/main/java/ibf2021/chessserver/models/Message.java	/^	public Message(String cmd, String gid) {$/;"	m	class:Message
+Message	src/main/java/ibf2021/chessserver/models/Message.java	/^public class Message {$/;"	c
+addPlayer	src/main/java/ibf2021/chessserver/models/Game.java	/^	public void addPlayer(WebSocketSession sess) {$/;"	m	class:Game
+addPlayerToGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public void addPlayerToGame(final String gid, final WebSocketSession sess) {$/;"	m	class:ChessRepositoryService
+afterConnectionClosed	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	public void afterConnectionClosed(WebSocketSession sess, CloseStatus status) throws Exception {$/;"	m	class:ChessEndpoint
+afterConnectionEstablished	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	public void afterConnectionEstablished(WebSocketSession sess) throws Exception {$/;"	m	class:ChessEndpoint
+chessRepoSvc	src/main/java/ibf2021/chessserver/AppConfig.java	/^	private ChessRepositoryService chessRepoSvc;$/;"	f	class:AppConfig	file:
+chessRepoSvc	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	private final ChessRepositoryService chessRepoSvc;$/;"	f	class:ChessEndpoint	file:
+chessRepoSvc	src/main/java/ibf2021/chessserver/controllers/ChessGameController.java	/^	private ChessRepositoryService chessRepoSvc;$/;"	f	class:ChessGameController	file:
+close	src/main/java/ibf2021/chessserver/models/Game.java	/^	public void close() {$/;"	m	class:Game
+cmd	src/main/java/ibf2021/chessserver/models/Message.java	/^	private final String cmd;$/;"	f	class:Message	file:
+contextLoads	src/test/java/ibf2021/chessserver/ChessserverApplicationTests.java	/^	void contextLoads() {$/;"	m	class:ChessserverApplicationTests
+createGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public String createGame(final WebSocketSession sess) {$/;"	m	class:ChessRepositoryService
+createNewGame	src/main/java/ibf2021/chessserver/models/Message.java	/^	public static Message createNewGame(String gid) {$/;"	m	class:Message
+deleteGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public void deleteGame(final String gid) {$/;"	m	class:ChessRepositoryService
+games	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	final private Map<String, Game> games = new HashMap<>();$/;"	f	class:ChessRepositoryService	file:
+getCommand	src/main/java/ibf2021/chessserver/models/Message.java	/^	public String getCommand() { return this.cmd; }$/;"	m	class:Message
+getGameId	src/main/java/ibf2021/chessserver/models/Game.java	/^	public String getGameId() { return this.gid; }$/;"	m	class:Game
+getGameId	src/main/java/ibf2021/chessserver/models/Message.java	/^	public String getGameId() { return this.gid; }$/;"	m	class:Message
+getOpenGames	src/main/java/ibf2021/chessserver/controllers/ChessGameController.java	/^	public String getOpenGames() {$/;"	m	class:ChessGameController
+getOpenGames	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public List<String> getOpenGames() {$/;"	m	class:ChessRepositoryService
+gid	src/main/java/ibf2021/chessserver/models/Game.java	/^	private final String gid;$/;"	f	class:Game	file:
+gid	src/main/java/ibf2021/chessserver/models/Message.java	/^	private final String gid;$/;"	f	class:Message	file:
+handleMessage	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	public void handleMessage(WebSocketSession sess, WebSocketMessage<?> msg) throws Exception {$/;"	m	class:ChessEndpoint
+ibf2021.chessserver	src/main/java/ibf2021/chessserver/AppConfig.java	/^package ibf2021.chessserver;$/;"	p
+ibf2021.chessserver	src/main/java/ibf2021/chessserver/ChessserverApplication.java	/^package ibf2021.chessserver;$/;"	p
+ibf2021.chessserver	src/main/java/ibf2021/chessserver/Constants.java	/^package ibf2021.chessserver;$/;"	p
+ibf2021.chessserver	src/test/java/ibf2021/chessserver/ChessserverApplicationTests.java	/^package ibf2021.chessserver;$/;"	p
+ibf2021.chessserver.controllers	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^package ibf2021.chessserver.controllers;$/;"	p
+ibf2021.chessserver.controllers	src/main/java/ibf2021/chessserver/controllers/ChessGameController.java	/^package ibf2021.chessserver.controllers;$/;"	p
+ibf2021.chessserver.models	src/main/java/ibf2021/chessserver/models/Game.java	/^package ibf2021.chessserver.models;$/;"	p
+ibf2021.chessserver.models	src/main/java/ibf2021/chessserver/models/Message.java	/^package ibf2021.chessserver.models;$/;"	p
+ibf2021.chessserver.services	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^package ibf2021.chessserver.services;$/;"	p
+isNewGame	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	private boolean isNewGame(final URI uri) {$/;"	m	class:ChessEndpoint	file:
+isStarted	src/main/java/ibf2021/chessserver/models/Game.java	/^	public boolean isStarted() {$/;"	m	class:Game
+main	src/main/java/ibf2021/chessserver/ChessserverApplication.java	/^	public static void main(String[] args) {$/;"	m	class:ChessserverApplication
+players	src/main/java/ibf2021/chessserver/models/Game.java	/^	private List<WebSocketSession> players = new LinkedList<>();$/;"	f	class:Game	file:
+readLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public <T> T readLock(Supplier<T> supp) {$/;"	m	class:ChessRepositoryService
+registerWebSocketHandlers	src/main/java/ibf2021/chessserver/AppConfig.java	/^	public void registerWebSocketHandlers(WebSocketHandlerRegistry reg) {$/;"	m	class:AppConfig
+rwLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	final private ReadWriteLock rwLock = new ReentrantReadWriteLock(true);$/;"	f	class:ChessRepositoryService	file:
+sendMessage	src/main/java/ibf2021/chessserver/models/Game.java	/^	public void sendMessage(final String payload) {$/;"	m	class:Game
+toJson	src/main/java/ibf2021/chessserver/models/Message.java	/^	public String toJson() {$/;"	m	class:Message
+writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private String writeLock(Supplier<String> supp) {$/;"	m	class:ChessRepositoryService	file:
+writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private void writeLock(Runnable command) {$/;"	m	class:ChessRepositoryService	file:
