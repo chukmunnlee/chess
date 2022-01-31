@@ -1,14 +1,5 @@
 <div class="container">
-	<div class="row mt-4">
-		<div class="col d-flex justify-content-center align-items-center">
-			<app-control (onSelection)="perform($event)" [gameIds]="gameIds"></app-control>
-		</div>
-	</div>
 
-	<div class="row mt-4">
-		<div class="col d-flex justify-content-center align-items-center">
-			<app-board></app-board>
-		</div>
-	</div>
+	<router-outlet></router-outlet>
 
 </div>

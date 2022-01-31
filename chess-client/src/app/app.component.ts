@@ -18,13 +18,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 	constructor(private chessSvc: ChessService) { }
 
 	ngOnInit() {
-		this.chessSvc.getOpenGames()
-			.then(result => this.gameIds = result)
-			.catch(err => console.error(err))
 	}
 
 	ngAfterViewInit() {
-		console.info('>>> board: ', this.board)
 	}
 
 	perform(cmd: ControlAction) {
