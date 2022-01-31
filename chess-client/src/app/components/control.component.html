@@ -9,15 +9,15 @@
 			<div class="col">
 				<mat-form-field class="w-100">
 					<mat-label>Open Games</mat-label>
-					<mat-select>
-						<mat-option value="abc">abc</mat-option>
-						<mat-option value="123">123</mat-option>
-						<mat-option value="xyz">xyz</mat-option>
+					<mat-select formControlName="gameId">
+						<mat-option *ngFor="let gid of gameIds" [value]="gid">
+							<code> {{ gid }} </code>
+						</mat-option>
 					</mat-select>
 				</mat-form-field>
 			</div>
 			<div class="col">
-				<button type="submit" mat-raised-button color="primary">
+				<button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
 					Join
 				</button>
 			</div>

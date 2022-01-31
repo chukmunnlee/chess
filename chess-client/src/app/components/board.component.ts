@@ -14,17 +14,19 @@ export class BoardComponent implements OnInit {
 
 	constructor(private win: Window) { }
 
-  ngOnInit(): void {
+	ngOnInit(): void {
 		const config = {
 		  position: 'start',
 		  pieceTheme: 'assets/img/chesspieces/wikipedia/{piece}.png',
 		  orientation: 'white'
 		}
 		this.board = Chessboard('chessboard')
-  }
+	}
+
+	move(src: string, dst: string) {
+	}
 
 	onResize() {
-		console.info('on resize')
 		this.board.resize()
 	}
 

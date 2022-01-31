@@ -13,8 +13,8 @@ import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 
 @RestController
-@RequestMapping("/game")
-public class ChessGameController {
+@RequestMapping("/games")
+public class ChessGamesController {
 
 	@Autowired
 	private ChessRepositoryService chessRepoSvc;

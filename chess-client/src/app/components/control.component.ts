@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {CMD_CREATE_GAME, CMD_JOIN_GAME, ControlAction} from '../models';
@@ -13,6 +13,9 @@ export class ControlComponent implements OnInit {
 	@Output()
 	onSelection = new Subject<ControlAction>();
 
+	@Input()
+	gameIds: string[] = []
+
 	form!: FormGroup
 
 	constructor(private fb: FormBuilder) { }
@@ -22,12 +25,10 @@ export class ControlComponent implements OnInit {
 	}
 
 	createGame() {
-		console.info('create game')
 		this.onSelection.next({ command: CMD_CREATE_GAME })
 	}
 	
 	joinGame() {
-		console.info('join game')
 		this.onSelection.next({
 			command: CMD_JOIN_GAME,
 			gameId: this.form.value.gameId
