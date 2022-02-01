@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {CMD_CREATE_GAME, CMD_JOIN_GAME, ControlAction} from '../models';
+import {BTN_CREATE_GAME, BTN_JOIN_GAME, ControlAction} from '../models';
 
 @Component({
   selector: 'app-control',
@@ -25,12 +25,12 @@ export class ControlComponent implements OnInit {
 	}
 
 	createGame() {
-		this.onSelection.next({ command: CMD_CREATE_GAME })
+		this.onSelection.next({ command: BTN_CREATE_GAME })
 	}
 	
 	joinGame() {
 		this.onSelection.next({
-			command: CMD_JOIN_GAME,
+			command: BTN_JOIN_GAME,
 			gameId: this.form.value.gameId
 		})
 	}

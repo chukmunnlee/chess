@@ -17,9 +17,7 @@ public class ChessRepositoryService {
 	final private Map<String, Game> games = new HashMap<>();
 	final private ReadWriteLock rwLock = new ReentrantReadWriteLock(true);
 
-	public ChessRepositoryService() {
-		System.out.println(">>> chess repository service");
-	}
+	public ChessRepositoryService() { }
 
 	public String createGame(final WebSocketSession sess) {
 		String gid = writeLock(() -> {
