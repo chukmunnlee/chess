@@ -17,6 +17,7 @@ import ibf2021.chessserver.models.ChessMessage;
 import ibf2021.chessserver.services.*;
 
 import static ibf2021.chessserver.Constants.*;
+import static ibf2021.chessserver.models.MessageUtils.*;
 
 public class ChessEndpoint extends TextWebSocketHandler {
 
@@ -33,19 +34,16 @@ public class ChessEndpoint extends TextWebSocketHandler {
 		final URI uri = sess.getUri();
 
 		if (isNewGame(uri)) {
-			Map<String, Object> attr = sess.getAttributes();
 			String gid = chessRepoSvc.createGame(sess);
-			attr.put(ATTR_GAMEID, gid);
-			attr.put(ATTR_ORIENTATION, ORIENTATION_WHITE);
 
 			try {
-				TextMessage msg = new TextMessage(ChessMessage.createNewGame(gid).toJson());
+				TextMessage msg = new TextMessage(createNewGame(gid).toJson().toString());
 				sess.sendMessage(msg);
 				logger.info("Creating new game: %s".formatted(gid));
 			} catch(Exception ex) {
 				logger.log(Level.SEVERE, "afterConnectionEstablished", ex);
 			}
-		}
+		} 
 	}
 
 	@Override
@@ -62,8 +60,24 @@ public class ChessEndpoint extends TextWebSocketHandler {
 	public void handleMessage(WebSocketSession sess, WebSocketMessage<?> msg) throws Exception {
 		System.out.printf("url path: %s\n", sess.getUri().getPath());
 		System.out.printf("\tpayload: %s\n", msg.getPayload().toString());
-		TextMessage resp = new TextMessage("hello world: %s".formatted((new Date()).toString()));
-		sess.sendMessage(resp);
+
+		ChessMessage chessMsg = parse(msg.getPayload().toString());
+		String gid = chessMsg.getGameId();
+
+		switch (chessMsg.getCommand()) {
+			case CMD_JOIN:
+				chessRepoSvc.joinGame(gid, sess);
+				// Confirm joined
+				TextMessage resp = new TextMessage(msg.getPayload().toString());
+				sess.sendMessage(resp);
+
+				// Send start game to 
+				chessRepoSvc.startGame(gid);
+				break;
+
+			default:
+				logger.warning("Invalid command: %s".formatted(msg.getPayload().toString()));
+		}
 	}
 
 	private boolean isNewGame(final URI uri) {

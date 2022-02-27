@@ -17,6 +17,11 @@
 				</mat-form-field>
 			</div>
 			<div class="col">
+				<button type="button" mat-icon-button color="accent" (click)="refresh()">
+					<mat-icon>refresh</mat-icon>
+				</button>
+			</div>
+			<div class="col">
 				<button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
 					Join
 				</button>

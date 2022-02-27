@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CMD_START} from '../models';
 import {ChessService} from '../services/chess.service';
 import {BoardComponent} from './board.component';
 
@@ -16,15 +18,25 @@ export class PlayComponent implements OnInit, AfterViewInit {
 	gameId!: string
 
 	constructor(private router: Router, private activatedRoute: ActivatedRoute
-			, private chessSvc: ChessService) { }
+			, private titleSvc: Title, private chessSvc: ChessService) { }
 
 	ngOnInit(): void { 
 		this.gameId = this.activatedRoute.snapshot.params['gid']
-		console.info('>>>> gid: ', this.gameId)
+		this.titleSvc.setTitle(`Game: ${this.gameId}`)
 	}
 
 	ngAfterViewInit() {
-		console.info('>>> board: ', this.board)
+		this.chessSvc.subj$.subscribe(
+			msg => {
+				switch (msg.command) {
+					case CMD_START:
+						this.board.createGame(msg.player)
+						break
+
+					default:
+				}
+			}
+		);
 	}
 
 }

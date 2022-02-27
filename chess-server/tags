@@ -2363,7 +2363,9 @@ AnonymousFunctionf023361c0e00	src/main/resources/static/assets/chessboard.js	/^!
 AppConfig	src/main/java/ibf2021/chessserver/AppConfig.java	/^public class AppConfig implements WebSocketConfigurer {$/;"	c
 B	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 C	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
+CMD_JOIN	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String CMD_JOIN = "join";$/;"	f	interface:Constants
 CMD_NEW	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String CMD_NEW = "new";$/;"	f	interface:Constants
+CMD_START	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String CMD_START = "start";$/;"	f	interface:Constants
 ChessEndpoint	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	public ChessEndpoint(ChessRepositoryService chessRepoSvc) {$/;"	m	class:ChessEndpoint
 ChessEndpoint	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^public class ChessEndpoint extends TextWebSocketHandler {$/;"	c
 ChessGamesController	src/main/java/ibf2021/chessserver/controllers/ChessGamesController.java	/^public class ChessGamesController {$/;"	c
@@ -2387,9 +2389,10 @@ I	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";requ
 J	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f
 L	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f
 M	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
-MSG_ATTR_CMD	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_CMD = "cmd";$/;"	f	interface:Constants
+MSG_ATTR_CMD	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_CMD = "command";$/;"	f	interface:Constants
 MSG_ATTR_GID	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_GID = "gameId";$/;"	f	interface:Constants
-MSG_ATTR_ORIENTATION	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_ORIENTATION = "orientation";$/;"	f	interface:Constants
+MSG_ATTR_PLAYER	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String MSG_ATTR_PLAYER = "player";$/;"	f	interface:Constants
+MessageUtils	src/main/java/ibf2021/chessserver/models/MessageUtils.java	/^public class MessageUtils {$/;"	c
 N	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 O	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 ORIENTATION_BLACK	src/main/java/ibf2021/chessserver/Constants.java	/^	public static final String ORIENTATION_BLACK = "black";$/;"	f	interface:Constants
@@ -2421,7 +2424,8 @@ complete	src/main/resources/static/assets/chessboard.js	/^!function(){"use stric
 complete	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	m	class:window.Chessboard.t
 contextLoads	src/test/java/ibf2021/chessserver/ChessserverApplicationTests.java	/^	void contextLoads() {$/;"	m	class:ChessserverApplicationTests
 createGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public String createGame(final WebSocketSession sess) {$/;"	m	class:ChessRepositoryService
-createNewGame	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public static ChessMessage createNewGame(String gid) {$/;"	m	class:ChessMessage
+createNewGame	src/main/java/ibf2021/chessserver/models/MessageUtils.java	/^	public static ChessMessage createNewGame(String gid) {$/;"	m	class:MessageUtils
+createStartGame	src/main/java/ibf2021/chessserver/models/MessageUtils.java	/^	public static ChessMessage createStartGame(String gameId, String player) {$/;"	m	class:MessageUtils
 deleteGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public void deleteGame(final String gid) {$/;"	m	class:ChessRepositoryService
 destroy	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:i
 dst	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	private String dst;$/;"	f	class:ChessMessage	file:
@@ -2439,6 +2443,8 @@ getGameId	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public S
 getGameId	src/main/java/ibf2021/chessserver/models/Game.java	/^	public String getGameId() { return this.gid; }$/;"	m	class:Game
 getOpenGames	src/main/java/ibf2021/chessserver/controllers/ChessGamesController.java	/^	public String getOpenGames() {$/;"	m	class:ChessGamesController
 getOpenGames	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public List<String> getOpenGames() {$/;"	m	class:ChessRepositoryService
+getPlayer	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public String getPlayer() { return this.player; }$/;"	m	class:ChessMessage
+getPlayer	src/main/java/ibf2021/chessserver/models/Game.java	/^	public Optional<WebSocketSession> getPlayer(final String player) {$/;"	m	class:Game
 getSrc	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public String getSrc() { return this.src; }$/;"	m	class:ChessMessage
 gid	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	private final String gid;$/;"	f	class:ChessMessage	file:
 gid	src/main/java/ibf2021/chessserver/models/Game.java	/^	private final String gid;$/;"	f	class:Game	file:
@@ -2452,10 +2458,12 @@ ibf2021.chessserver.controllers	src/main/java/ibf2021/chessserver/controllers/Ch
 ibf2021.chessserver.controllers	src/main/java/ibf2021/chessserver/controllers/ChessGamesController.java	/^package ibf2021.chessserver.controllers;$/;"	p
 ibf2021.chessserver.models	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^package ibf2021.chessserver.models;$/;"	p
 ibf2021.chessserver.models	src/main/java/ibf2021/chessserver/models/Game.java	/^package ibf2021.chessserver.models;$/;"	p
+ibf2021.chessserver.models	src/main/java/ibf2021/chessserver/models/MessageUtils.java	/^package ibf2021.chessserver.models;$/;"	p
 ibf2021.chessserver.services	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^package ibf2021.chessserver.services;$/;"	p
 isNewGame	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	private boolean isNewGame(final URI uri) {$/;"	m	class:ChessEndpoint	file:
 isStarted	src/main/java/ibf2021/chessserver/models/Game.java	/^	public boolean isStarted() {$/;"	m	class:Game
 j	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f
+joinGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public boolean joinGame(final String gameId, final WebSocketSession sess) {$/;"	m	class:ChessRepositoryService
 k	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 logger	src/main/java/ibf2021/chessserver/controllers/ChessEndpoint.java	/^	private final Logger logger = Logger.getLogger(ChessserverApplication.class.getName());$/;"	f	class:ChessEndpoint	file:
 logging	src/main/java/ibf2021/chessserver/AppConfig.java	/^	public CommonsRequestLoggingFilter logging() {$/;"	m	class:AppConfig
@@ -2469,30 +2477,41 @@ o	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";requ
 o	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	v
 orientation	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:i
 p	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	c	class:window.Chessboard.q
+parse	src/main/java/ibf2021/chessserver/models/MessageUtils.java	/^	public static ChessMessage parse(String msg) throws IOException {$/;"	m	class:MessageUtils
+player	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	private String player;$/;"	f	class:ChessMessage	file:
 players	src/main/java/ibf2021/chessserver/models/Game.java	/^	private List<WebSocketSession> players = new LinkedList<>();$/;"	f	class:Game	file:
 position	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:i
 q	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 r	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	c	class:window.Chessboard
 r	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	v
-readLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public <T> T readLock(Supplier<T> supp) {$/;"	m	class:ChessRepositoryService
+readLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private <R> R readLock(final String gid, Function<Game, R> func) {$/;"	m	class:ChessRepositoryService	file:
+readLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private <T> T readLock(Supplier<T> supp) {$/;"	m	class:ChessRepositoryService	file:
+readLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private void readLock(final String gid, Consumer<Game> func) {$/;"	m	class:ChessRepositoryService	file:
 registerWebSocketHandlers	src/main/java/ibf2021/chessserver/AppConfig.java	/^	public void registerWebSocketHandlers(WebSocketHandlerRegistry reg) {$/;"	m	class:AppConfig
 resize	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:i
 rwLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	final private ReadWriteLock rwLock = new ReentrantReadWriteLock(true);$/;"	f	class:ChessRepositoryService	file:
 s	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:V
 s	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	v
 sendMessage	src/main/java/ibf2021/chessserver/models/Game.java	/^	public void sendMessage(final String payload) {$/;"	m	class:Game
+sendMessage	src/main/java/ibf2021/chessserver/models/Game.java	/^	public void sendMessage(final String player, final String payload) {$/;"	m	class:Game
+sendMessage	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public void sendMessage(final String gid, final ChessMessage payload) {$/;"	m	class:ChessRepositoryService
+sendMessage	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public void sendMessage(final String gid, final String player, final ChessMessage payload) {$/;"	m	class:ChessRepositoryService
 setDst	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public void setDst(String dst) { this.dst = dst; }$/;"	m	class:ChessMessage
+setPlayer	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public void setPlayer(String player) { this.player = player; }$/;"	m	class:ChessMessage
 setSrc	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public void setSrc(String src) { this.src = src; }$/;"	m	class:ChessMessage
 src	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	private String src;$/;"	f	class:ChessMessage	file:
 start	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:i
+startGame	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	public void startGame(final String gid) {$/;"	m	class:ChessRepositoryService
 t	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	c	class:window.Chessboard
 t	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f
 t	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:V
 t	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	v
-toJson	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public String toJson() {$/;"	m	class:ChessMessage
+toJson	src/main/java/ibf2021/chessserver/models/ChessMessage.java	/^	public JsonObject toJson() {$/;"	m	class:ChessMessage
 u	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	c	class:window.Chessboard.O
-writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private String writeLock(Supplier<String> supp) {$/;"	m	class:ChessRepositoryService	file:
-writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private void writeLock(Runnable command) {$/;"	m	class:ChessRepositoryService	file:
+writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private <R> R writeLock(final String gid, Function<Game, R> func) {$/;"	m	class:ChessRepositoryService	file:
+writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private <R> R writeLock(final Supplier<R> supp) {$/;"	m	class:ChessRepositoryService	file:
+writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private void writeLock(final Runnable command) {$/;"	m	class:ChessRepositoryService	file:
+writeLock	src/main/java/ibf2021/chessserver/services/ChessRepositoryService.java	/^	private void writeLock(final String gid, Consumer<Game> func) {$/;"	m	class:ChessRepositoryService	file:
 x	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 y	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	f	function:window.Chessboard
 z	src/main/resources/static/assets/chessboard.js	/^!function(){"use strict";require(".\/chessboard.css");var z=require("jquery"),F="abcdefgh".split/;"	v

@@ -1,5 +1,6 @@
 package ibf2021.chessserver.models;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.UUID;
 
@@ -7,6 +8,10 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import static ibf2021.chessserver.Constants.*;
 
 public class Game {
 
@@ -36,6 +41,27 @@ public class Game {
 			.forEach(sess -> {
 				try { sess.close(); } catch (Exception ex) { }
 			});
+	}
+
+	public Optional<WebSocketSession> getPlayer(final String player) {
+		for (WebSocketSession sess: players) {
+			Map<String, Object> attr = sess.getAttributes();
+			if (attr.get(ATTR_ORIENTATION).toString().equals(player))
+				return Optional.of(sess);
+		}
+		return Optional.empty();
+	}
+
+	public void sendMessage(final String player, final String payload) {
+		Optional<WebSocketSession> opt = getPlayer(player);
+		if (opt.isEmpty())
+			return;
+		WebSocketSession sess = opt.get();
+		try {
+			sess.sendMessage(new TextMessage(payload));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public void sendMessage(final String payload) {

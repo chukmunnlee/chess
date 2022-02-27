@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {BTN_CREATE_GAME, BTN_JOIN_GAME, ControlAction} from '../models';
+import {BTN_CREATE_GAME, BTN_JOIN_GAME, BTN_REFRESH_GAME_IDS, ControlAction} from '../models';
 
 @Component({
   selector: 'app-control',
@@ -25,7 +25,7 @@ export class ControlComponent implements OnInit {
 	}
 
 	createGame() {
-		this.onSelection.next({ command: BTN_CREATE_GAME })
+		this.onSelection.next({ command: BTN_CREATE_GAME, gameId: '' })
 	}
 	
 	joinGame() {
@@ -35,11 +35,16 @@ export class ControlComponent implements OnInit {
 		})
 	}
 
+	refresh() {
+		this.onSelection.next({
+			command: BTN_REFRESH_GAME_IDS,
+			gameId: ""
+		})
+	}
+
 	private createForm(): FormGroup {
 		return this.fb.group({
 			gameId: this.fb.control('', [ Validators.required ])
 		})
 	}
-
-
 }

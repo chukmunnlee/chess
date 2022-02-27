@@ -1,16 +1,20 @@
 export const BTN_CREATE_GAME = 'create-game'
 export const BTN_JOIN_GAME = 'join-game'
+export const BTN_REFRESH_GAME_IDS = 'refresh-game-ids'
 
 export const CMD_NEW = 'new'
+export const CMD_JOIN = 'join'
+export const CMD_START = 'start'
 
 export interface ControlAction {
 	command: string 
-	gameId?: string
+	gameId: string
 }
 
 export interface ChessMessage {
+	command: string 
 	gameId: string
-	cmd: string
+	player: string
 	src?: string
 	dest?: string
 }

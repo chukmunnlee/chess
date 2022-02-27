@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {BTN_CREATE_GAME, BTN_JOIN_GAME, CMD_NEW, ControlAction} from '../models';
+import {BTN_CREATE_GAME, BTN_JOIN_GAME, BTN_REFRESH_GAME_IDS, CMD_JOIN, CMD_NEW, ControlAction} from '../models';
 import {ChessService} from '../services/chess.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
 	sub$!: Subscription
 
-	constructor(private chessSvc: ChessService, private router: Router) { }
+	constructor(private chessSvc: ChessService, private router: Router, private zone: NgZone) { }
 
 	ngOnInit() {
 		this.chessSvc.getOpenGames()
@@ -24,22 +24,30 @@ export class MainComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		if (this.sub$)
-			this.sub$.unsubscribe()
+		this.sub$?.unsubscribe()
 	}
 
 	perform(cmd: ControlAction) {
 		switch (cmd.command) {
 			case BTN_JOIN_GAME:
-				this.router.navigate([ 'game', cmd.gameId ])
+				this.sub$ = this.chessSvc.joinGame(cmd?.gameId).subscribe(
+					msg => {
+						if (CMD_JOIN == msg.command)
+							this.router.navigate([ '/game', cmd.gameId ])
+					}
+				)
 				break
 
 			case BTN_CREATE_GAME:
 				this.sub$ = this.chessSvc.createGame().subscribe(
 					msg => {
-						if (CMD_NEW == msg.cmd)
+						if (CMD_NEW == msg.command)
 							this.router.navigate([ '/game', this.chessSvc.gameId ])
 					})
+				break
+
+			case BTN_REFRESH_GAME_IDS:
+				this.ngOnInit()
 				break
 
 			default:

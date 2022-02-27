@@ -15,12 +15,17 @@ export class BoardComponent implements OnInit {
 	constructor(private win: Window) { }
 
 	ngOnInit(): void {
+		this.board = Chessboard('chessboard')
+	}
+
+	createGame(player: string) {
 		const config = {
 		  position: 'start',
 		  pieceTheme: 'assets/img/chesspieces/wikipedia/{piece}.png',
-		  orientation: 'white'
+		  orientation: player
 		}
-		this.board = Chessboard('chessboard')
+		console.info('>>>> config = ', config);
+		this.board = Chessboard('chessboard', config)
 	}
 
 	move(src: string, dst: string) {
