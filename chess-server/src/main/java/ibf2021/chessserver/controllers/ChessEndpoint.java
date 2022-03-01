@@ -75,6 +75,10 @@ public class ChessEndpoint extends TextWebSocketHandler {
 				chessRepoSvc.startGame(gid);
 				break;
 
+			case CMD_MOVE:
+				chessRepoSvc.sendMessage(gid, chessMsg);
+				break;
+
 			default:
 				logger.warning("Invalid command: %s".formatted(msg.getPayload().toString()));
 		}

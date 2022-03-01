@@ -2,8 +2,8 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {lastValueFrom, Subject} from "rxjs";
 
-import { ChessMessage, CMD_JOIN, CMD_NEW, CMD_START } from '../models'
-import {mkJoinMessage} from "../utils";
+import { ChessEvent, ChessMessage, CMD_JOIN, CMD_NEW, CMD_START, CMD_MOVE } from '../models'
+import {mkJoinMessage, mkMoveMessage} from "../utils";
 
 @Injectable()
 export class ChessService {
@@ -43,16 +43,8 @@ export class ChessService {
 		return this.subj$
 	}
 
-	newGame() {
-		/*
-	  const config = {
-		  position: 'start',
-		  pieceTheme: 'assets/img/chesspieces/wikipedia/{piece}.png',
-		  orientation: 'white'
-	  }
-		const board = Chessboard('chessboard', config)
-		console.info('>>> board', board);
-		*/
+	movePiece(evt: ChessEvent) {
+		this.sock.send(mkMoveMessage(this.gameId, evt.src, evt.dest, evt.player))
 	}
 
 	private initSocket() {
@@ -79,6 +71,7 @@ export class ChessService {
 
 	private onMessage(event: any) {
 		const gm = JSON.parse(event.data) as ChessMessage
+
 		switch (gm.command) {
 			case CMD_NEW:
 				this._gameId = gm.gameId
@@ -91,6 +84,12 @@ export class ChessService {
 
 			case CMD_START:
 				break
+
+			case CMD_MOVE:
+				break;
+
+			default:
+
 		}
 
 		this.subj$.next(gm)

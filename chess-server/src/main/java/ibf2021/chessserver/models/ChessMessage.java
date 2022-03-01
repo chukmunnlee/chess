@@ -40,15 +40,27 @@ public class ChessMessage {
 		builder.add(MSG_ATTR_CMD, this.cmd);
 		builder.add(MSG_ATTR_GID, this.gid);
 
-		return switch (this.cmd) {
-			case CMD_NEW -> builder.build();
+		switch (cmd) {
+			case CMD_NEW:
+			case CMD_JOIN:
+				break;
 
-			case CMD_JOIN -> builder.build();
+			case CMD_START: 
+				builder.add(MSG_ATTR_PLAYER, this.player);
+				break;
 
-			case CMD_START -> builder.add(MSG_ATTR_PLAYER, this.player).build();
+			case CMD_MOVE:
+				builder.add(MSG_ATTR_PLAYER, this.player);
+				builder.add(MSG_ATTR_SRC, src);
+				builder.add(MSG_ATTR_DEST, dst);
+				break;
 
-			default -> 
+			default:
 				throw new IllegalArgumentException("Unknow message command: %s".formatted(this.cmd));
-		};
+
+		}
+
+		return builder.build();
+
 	}
 }

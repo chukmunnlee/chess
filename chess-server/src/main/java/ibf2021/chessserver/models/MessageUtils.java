@@ -30,10 +30,22 @@ public class MessageUtils {
 		final String cmd = obj.getString(MSG_ATTR_CMD);
 		final String gameId = obj.getString(MSG_ATTR_GID);
 
-		return switch (cmd) {
-			case CMD_JOIN -> new ChessMessage(cmd, gameId);
+		ChessMessage chessMsg = new ChessMessage(cmd, gameId);
 
-			default -> null;
-		};
+		switch (cmd) {
+			case CMD_JOIN:
+				break;
+
+			case CMD_MOVE:
+				chessMsg.setSrc(obj.getString(MSG_ATTR_SRC));
+				chessMsg.setDst(obj.getString(MSG_ATTR_DEST));
+				chessMsg.setPlayer(obj.getString(MSG_ATTR_PLAYER));
+				break;
+
+			default:
+		}
+
+		return chessMsg;
+
 	}
 }
